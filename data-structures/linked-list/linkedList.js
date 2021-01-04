@@ -29,6 +29,27 @@ module.exports = class LinkedList {
 		return this
 	}
 
+	insertAtNth (newData, position) {
+		const tempNode = new Node(newData)
+		let currentNode = this.head
+		let prevNode = null
+
+		let i = 0
+		while (i < position) {
+			prevNode = currentNode
+			currentNode = currentNode.nextElement
+			if (currentNode === null) {
+				break;
+			}
+			i++
+		}
+
+		tempNode.nextElement = currentNode
+		prevNode.nextElement = tempNode
+
+		return this
+	}
+
 	isEmpty () {
 		return (this.head == null)
 	}
