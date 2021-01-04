@@ -63,25 +63,45 @@ module.exports = class LinkedList {
 
 	deleteVal (val) {
 		if (this.isEmpty()) {
-			return false
+			return this
 		}
 
 		let currNode = this.head
 		if (currNode.data === value) {
 			this.head = currNode.nextElement
-			return true
+			return this
 		}
 
 		while (currNode.nextElement !== null) {
 			if (currNode.nextElement.data === val) {
 				currNode.nextElement = currNode.nextElement.nextElement
-				return true
+				return this
 			}
 
 			currNode = currNode.nextElement
 		}
 
-		return false
+		return this
+	}
+
+	deleteAtTail () {
+		if (this.isEmpty()) {
+			return this
+		}
+
+		let currNode = this.head
+
+		if (currNode.nextElement === null) {
+			this.deleteAtHead()
+			return this
+		}
+
+		while (currNode.nextElement.nextElement !== null) {
+			currNode = currNode.nextElement
+		}
+
+		currNode.nextElement = null
+		return this
 	}
 
 	isEmpty () {
