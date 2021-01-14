@@ -1,5 +1,3 @@
-const Node = require('./node.js')
-
 module.exports = class LinkedList {
 	constructor() {
 		this.head = null
