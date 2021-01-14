@@ -127,6 +127,12 @@ module.exports = class LinkedList {
 	getHead () {
 		return this.head
 	}
+
+	setHead(newHead) {
+    this.head = newHead;
+    return this;
+  }
+
 	getListStr () {
 		if (this.isEmpty()) {
 			console.log("Empty List")
