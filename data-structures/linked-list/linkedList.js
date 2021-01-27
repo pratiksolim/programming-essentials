@@ -1,4 +1,6 @@
-module.exports = class LinkedList {
+const Node = require('./node')
+
+class LinkedList {
 	constructor() {
 		this.head = null
 	}
@@ -109,17 +111,17 @@ module.exports = class LinkedList {
 	printList () {
 		if (this.isEmpty()) {
 			console.log("Empty List")
-			return false
+			return
 		}
 
 		let temp = this.head
+		let printedList = ''
+
 		while (temp != null) {
-			process.stdout.write(String(temp.data))
-			process.stdout.write(" -> ")
+			printedList.concat(String(temp.data), ' -> ')
 			temp = temp.nextElement
 		}
-		console.log("null")
-		return true
+		printedList.concat('null')
 	}
 
 	getHead () {
@@ -150,3 +152,5 @@ module.exports = class LinkedList {
 		return st
 	}
 }
+
+module.exports = LinkedList
