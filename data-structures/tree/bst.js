@@ -43,6 +43,22 @@ class BinarySearchTree {
 			this.preOrderTraversal(currNode.rightChild)
 		}
 	}
+
+	inOrderTraversal(currNode) {
+		if (currNode !== null) {
+			this.inOrderTraversal(currNode.leftChild)
+			console.log(currNode)
+			this.inOrderTraversal(currNode.rightChild)
+		}
+	}
+
+	postOrderTraversal(currNode) {
+		if (currNode !== null) {
+			this.postOrderTraversal(currNode.leftChild)
+			this.postOrderTraversal(currNode.rightChild)
+			console.log(currNode)
+		}
+	}
 }
 
 module.exports = BinarySearchTree
