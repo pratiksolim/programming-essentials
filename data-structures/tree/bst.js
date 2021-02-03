@@ -37,7 +37,7 @@ class BinarySearchTree {
 	}
 
 	preOrderTraversal(currNode) {
-		if (currNode !== null) {
+		if (currNode === null) {
 			console.log(currNode)
 			this.preOrderTraversal(currNode.leftChild)
 			this.preOrderTraversal(currNode.rightChild)
@@ -57,6 +57,22 @@ class BinarySearchTree {
 			this.postOrderTraversal(currNode.leftChild)
 			this.postOrderTraversal(currNode.rightChild)
 			console.log(currNode)
+		}
+	}
+
+	searchRecursive (value, currNode = this.root) {
+		if (currNode === null) {
+			return null
+		}
+
+		if (value === currNode.val) {
+			return currNode
+		}
+
+		if (val < currNode.val) {
+			return this.searchRecursive(val, currNode.leftChild)
+		} else {
+			return this.searchRecursive(val, currNode.rightChild)
 		}
 	}
 }
