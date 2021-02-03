@@ -35,6 +35,14 @@ class BinarySearchTree {
 			parent.rightChild = new Node(val)
 		}
 	}
+
+	preOrderTraversal(currNode) {
+		if (currNode !== null) {
+			console.log(currNode)
+			this.preOrderTraversal(currNode.leftChild)
+			this.preOrderTraversal(currNode.rightChild)
+		}
+	}
 }
 
 module.exports = BinarySearchTree
