@@ -75,6 +75,90 @@ class BinarySearchTree {
 			return this.searchRecursive(val, currNode.rightChild)
 		}
 	}
+
+	delete (value, currNode = this.root) {
+		if (currNode === null) {
+			return false
+		}
+
+		let parentNode
+		while (currNode && currNode.val !== value) {
+			parentNode = currNode
+
+			if (value < currNode.val) {
+				currNode = currNode.leftChild
+			} else {
+				currNode = currNode.rightChild
+			}
+		}
+
+		if (currNode === null) {
+			return false
+		}
+
+		if (currNode.leftChild === null && currNode.rightChild === null) {
+			if (currNode.val === this.root.val) {
+				this.root = null
+
+				return true
+			}
+
+			if (currNode.val < parentNode.val) {
+				parentNode.leftChild = null
+
+				return true
+			}
+
+			parentNode.rightChild = null
+
+			return true
+		}
+
+		if (currNode.leftChild === null) {
+			if (currNode.val === this.root.val) {
+				this.root = currNode.rightChild
+
+				return true
+			}
+
+			if (currNode.val < parentNode.val) {
+				parentNode.leftChild = currNode.rightChild
+
+				return true
+			}
+
+			parentNode.rightChild = currNode.rightChild
+
+			return true
+		}
+
+		if (currNode.rightChild === null) {
+			if (currNode.val === this.root.val) {
+				this.root = currNode.leftChild
+
+				return true
+			}
+
+			if (currNode.val < parentNode.val) {
+				parentNode.leftChild = currNode.leftChild
+
+				return true
+			}
+
+			parentNode.rightChild = currNode.leftChild
+
+			return true
+		}
+
+		let minRight = currNode.rightChild
+		while (minRight.leftChild !== null) {
+			minRight = minRight.leftChild
+		}
+
+		const temp = minRight.val
+		this.delete(this.root, minRight.val)
+		currNode.val = temp
+	}
 }
 
 module.exports = BinarySearchTree
